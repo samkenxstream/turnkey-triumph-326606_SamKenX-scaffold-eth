@@ -1,8 +1,7 @@
 // get balance information for the deployment account
 const qrcode = require("qrcode-terminal");
 const ethers = require("ethers");
-const fse = require("fs-extra");
-let DEBUG = false;
+const DEBUG = false;
 
 const main = async (callback) => {
   try {
