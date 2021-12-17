@@ -3,7 +3,6 @@ const fse = require("fse");
 const args = require("yargs").argv;
 
 const main = async (callback) => {
-  console.log("args " + JSON.stringify(args));
   //check mnemonic
   let mnemonic = fse.existsSync("./mnemonic.txt");
   if (mnemonic && !args.new) {
