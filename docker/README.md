@@ -11,7 +11,7 @@ Prerequisites:
 > clone/fork 🏗 scaffold-eth:
 
 ```bash
-git clone https://github.com/rufflesuite/scaffold-eth.git
+git clone https://github.com/trufflesuite/scaffold-eth.git
 
 > [basic] run the script that sets the stack up and that's it (takes some minutes to finish):
 
