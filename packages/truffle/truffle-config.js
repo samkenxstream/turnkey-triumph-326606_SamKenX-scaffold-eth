@@ -279,6 +279,11 @@ module.exports = {
   //   }
   // }
   // }
+  api_keys: {
+    etherscan: 'PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8'
+  },
+  // for more information on the truffle-plugin-verify package please see: https://github.com/rkalis/truffle-plugin-verify
+  plugins: ['truffle-plugin-verify'],
   compilers: {
     solc: {
       version: "0.8.0",

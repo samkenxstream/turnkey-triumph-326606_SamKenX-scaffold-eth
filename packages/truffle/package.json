@@ -18,7 +18,8 @@
     "wallet": "truffle exec scripts/wallet.js",
     "fundedwallet": "truffle exec scripts/fundedWallet.js",
     "flatten": "truffle exec scripts/flatten.js",
-    "clean": "truffle exec scripts/clean.js"
+    "clean": "truffle exec scripts/clean.js",
+    "verify": "truffle run verify"
   },
   "license": "MIT",
   "dependencies": {
@@ -32,6 +33,7 @@
     "fse": "^4.0.1",
     "qrcode-terminal": "^0.12.0",
     "truffle-flattener": "^1.5.0",
+    "truffle-plugin-verify": "^0.5.21",
     "yargs": "^17.3.0"
   }
 }

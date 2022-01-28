@@ -26,6 +26,7 @@
     "watch": "yarn workspace @scaffold-eth/truffle watch",
     "accounts": "yarn workspace @scaffold-eth/truffle accounts",
     "balance": "yarn workspace @scaffold-eth/truffle balance",
+    "verify": "yarn workspace @scaffold-eth/truffle verify",
     "ipfs": "yarn workspace @scaffold-eth/react-app ipfs",
     "surge": "yarn workspace @scaffold-eth/react-app surge",
     "s3": "yarn workspace @scaffold-eth/react-app s3",
