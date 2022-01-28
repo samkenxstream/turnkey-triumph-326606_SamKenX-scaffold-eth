@@ -57,10 +57,6 @@ export default function Account({
 }) {
   const { currentTheme } = useThemeSwitcher();
 
-  function isValidAddress(address) {
-    return address && address !== "0x0000000000000000000000000000000000000000";
-  }
-
   const modalButtons = [];
   if (web3Modal) {
     if (web3Modal.cachedProvider) {
@@ -117,7 +113,7 @@ export default function Account({
       ) : (
         ""
       )}
-      {useBurner ? (
+      {useBurner && web3Modal && !web3Modal.cachedProvider ? (
         <>
           <Address address={address} ensProvider={mainnetProvider} blockExplorer={blockExplorer} />
           <Balance address={address} provider={localProvider} price={price} />
