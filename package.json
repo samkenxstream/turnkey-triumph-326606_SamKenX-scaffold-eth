@@ -32,7 +32,6 @@
     "ship": "yarn workspace @scaffold-eth/react-app ship",
     "generate": "yarn workspace @scaffold-eth/truffle generate",
     "account": "yarn workspace @scaffold-eth/truffle account",
-    "mineContractAddress": "yarn workspace @scaffold-eth/truffle mineContractAddress",
     "wallet": "yarn workspace @scaffold-eth/truffle wallet",
     "fundedwallet": "yarn workspace @scaffold-eth/truffle fundedwallet",
     "flatten": "yarn workspace @scaffold-eth/truffle flatten",

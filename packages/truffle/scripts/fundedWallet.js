@@ -21,12 +21,13 @@ function generateAddressesFromSeed(mnemonic, count) {
 
 const main = async (callback) => {
   const url = args.url ? args.url : "http://localhost:3000";
-  let mnemonic = fse.readFileSync("./mnemonic.txt").toString().trim();
-  if (mnemonic) {
+  const mnemonicExists = fse.existsSync("./mnemonic.txt");
+  if (mnemonicExists) {
+    let mnemonic = fse.readFileSync("./mnemonic.txt").toString().trim();
     let wallet = generateAddressesFromSeed(mnemonic, 1);
     let balance = await web3.eth.getBalance(wallet[0].address);
     console.log("🔐 WALLET address is " + wallet[0].address + "");
-    console.log("🔗", url, "/pk#" + wallet[0].privateKey);
+    console.log("🔗" + url + "/pk#" + wallet[0].privateKey);
     console.log("Balance of funded wallet: ", web3.utils.fromWei(balance), "ETH");
     console.log(chalk.bold.cyanBright("\nDevelopers please note: your local ganache node comes with 10 pre-funded accounts containining 1000 ETH each. They can be accessed through web3 via the following command:"),
       chalk.bold.magenta("const ganacheAccounts = await web3.eth.getAccounts()"),
