@@ -27,8 +27,10 @@ module.exports = {
   //
   /**
   * contracts_build_directory tells Truffle where to store compiled contracts
+  * artifacts will be stored here, while the contract used by the react frontend is stored in
+  * the react-app/src/contracts/deployed_contracts.json
   */
-  contracts_build_directory: '../react-app/src/contracts/',
+  contracts_build_directory: '../react-app/src/contracts/truffle/',
   networks: {
     development: {
       url: "http://localhost:8545",
