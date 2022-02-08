@@ -8,8 +8,8 @@ const main = async (callback) => {
   // deployed_contracts.json
   async function builtContracts(artifacts, buildDirectory, networkId) {
     let contracts = {};
-    artifacts.map((async file => {
-      const artifact = JSON.parse(await fse.readFile(path.join(buildDirectory, file)));
+    artifacts.map((file => {
+      const artifact = JSON.parse(fse.readFileSync(path.join(buildDirectory, file)));
       contracts[artifact.contractName] = {
         address: artifact.networks[networkId].address,
         abi: artifact.abi

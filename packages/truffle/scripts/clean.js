@@ -3,7 +3,8 @@ const chalk = require("chalk");
 const path = require("path");
 
 const main = async (callback) => {
-
+  const reactContractsFile = '../react-app/src/contracts/deployed_contracts.json';
+  fse.remove(reactContractsFile);
   fse.readdir(config.contracts_build_directory).then(files => {
     // don't remove external_contracts file, it is used by the react frontend
     return Promise.all(
