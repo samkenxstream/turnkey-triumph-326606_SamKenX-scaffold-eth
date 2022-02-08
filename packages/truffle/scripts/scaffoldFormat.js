@@ -1,5 +1,6 @@
 const fse = require("fs-extra");
 const path = require("path");
+const args = require("yargs").argv;
 
 const main = async (callback) => {
 
@@ -7,8 +8,8 @@ const main = async (callback) => {
   // deployed_contracts.json
   async function builtContracts(artifacts, buildDirectory, networkId) {
     let contracts = {};
-    artifacts.map((file => {
-      const artifact = require(path.join(buildDirectory, file));
+    artifacts.map((async file => {
+      const artifact = JSON.parse(await fse.readFile(path.join(buildDirectory, file)));
       contracts[artifact.contractName] = {
         address: artifact.networks[networkId].address,
         abi: artifact.abi
@@ -18,9 +19,9 @@ const main = async (callback) => {
     return contracts;
   }
 
-  const network = config.network;
-  const networkId = config.networks[network].network_id;
-  const buildDirectory = config.contracts_build_directory;
+  const network = args.network;
+  const networkId = await web3.eth.net.getId();
+  const buildDirectory = '../react-app/src/contracts/truffle/';
   const contractsFile = '../react-app/src/contracts/deployed_contracts.json';
   const artifacts = fse.readdirSync(buildDirectory);
   const newContracts = await builtContracts(artifacts, buildDirectory, networkId);

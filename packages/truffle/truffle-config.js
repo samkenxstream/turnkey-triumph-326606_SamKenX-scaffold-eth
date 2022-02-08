@@ -32,17 +32,10 @@ module.exports = {
   */
   contracts_build_directory: '../react-app/src/contracts/truffle/',
   networks: {
-    development: {
-      url: "http://localhost:8545",
-      network_id: "*"
-      /*
-        we set a mnemonic to use with our ganache node, and can deploy through it
-
-      */
-    },
     localhost: {
       url: "http://localhost:8545",
-      network_id: "*"
+      network_id: "31337",
+      chainId: 31337
       /*
         we set a mnemonic to use with our ganache node, and can deploy through it
 
