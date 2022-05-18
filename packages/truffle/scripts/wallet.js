@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const fse = require("fse");
 const bip39 = require("bip39");
 const { hdkey } = require('ethereumjs-wallet');
@@ -19,7 +18,7 @@ function generateAddressesFromSeed(mnemonic, count) {
   return accounts;
 }
 
-const main = async (callback) => {
+const main = async () => {
 
   const url = args.url ? args.url : "http://localhost:3000";
   let mnemonic = fse.readFileSync("./mnemonic.txt").toString().trim();
@@ -27,17 +26,18 @@ const main = async (callback) => {
     let wallet = generateAddressesFromSeed(mnemonic, 1);
     console.log("🔐 WALLET address is " + wallet[0].address + "");
     console.log("🔗", url, "/pk#" + wallet[0].privateKey);
-    console.log(chalk.bold.cyanBright("\nDevelopers please note: your local ganache node comes with 10 pre-funded accounts containining 1000 ETH each. They can be accessed through web3 via the following command:"),
-      chalk.bold.magenta("const ganacheAccounts = await web3.eth.getAccounts()"),
-      chalk.cyanBright(" and a list of your accounts and private keys is available in your the console window where you ran"),
-      chalk.bold.magenta("yarn chain"), ".\n", chalk.bold.cyanBright("The above wallet and url information is for the first ganache account."));
+
+    console.log('\n\x1b[36m%s\x1b[0m', "Developers please note: your local ganache node comes with 10 pre-funded accounts containing 1000 ETH each. They can be accessed through web3 via the following command: ")
+    console.log("\n\x1b[35m%s\x1b[0m", "const ganacheAccounts = await web3.eth.getAccounts()")
+    console.log('\n\x1b[36m%s\x1b[0m', "A list of your accounts and private keys is available in your the console window where you ran", "\x1b[35m", "yarn chain.");
+    console.log('\n\x1b[36m%s\x1b[0m', "The wallet and url information provided is for the first ganache account. \n");
+
   } else {
-    console.log(`--- Looks like there is no mnemonic file created yet.`);
+    console.log("Looks like there is no mnemonic file created yet.");
     console.log(
-      `--- Please run ${chalk.greenBright("yarn generate")} to create one`
-    );
+      "Please run", "\x1b[35m", "yarn generate");
   }
 
 }
 
-module.exports = main;
+main();

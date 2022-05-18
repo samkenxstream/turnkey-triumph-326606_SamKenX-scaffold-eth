@@ -22,4 +22,4 @@ const main = async (callback) => {
   }
 }
 
-module.exports = main;
+main();

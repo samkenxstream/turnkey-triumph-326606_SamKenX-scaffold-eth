@@ -2,11 +2,16 @@
 const qrcode = require("qrcode-terminal");
 const ethers = require("ethers");
 const DEBUG = false;
+const TruffleConfig = require("@truffle/config");
+const config = TruffleConfig.detect();
+const mnemonic = require("./checkMnemonic");
 
-const main = async (callback) => {
+const main = async () => {
   try {
-    const accounts = await web3.eth.getAccounts();
-    const address = accounts[0];
+    const storedMnemonic = mnemonic();
+    const wallet = ethers.Wallet.fromMnemonic(storedMnemonic);
+    const address = wallet.address;
+
     qrcode.generate(address);
     console.log("‍📬 Deployer Account is " + address);
     for (const n in config.networks) {
@@ -31,4 +36,4 @@ const main = async (callback) => {
   }
 }
 
-module.exports = main;
+main();

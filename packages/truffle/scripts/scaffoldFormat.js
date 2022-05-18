@@ -1,6 +1,9 @@
 const fse = require("fs-extra");
 const path = require("path");
 const args = require("yargs").argv;
+const TruffleConfig = require("@truffle/config");
+const config = TruffleConfig.detect();
+const ethers = require("ethers");
 
 const main = async (callback) => {
 
@@ -20,7 +23,13 @@ const main = async (callback) => {
   }
 
   const network = args.network;
-  const networkId = await web3.eth.net.getId();
+
+  const provider = new ethers.providers.JsonRpcProvider(
+    config.networks[network].url
+  );
+
+  const { chainId: networkId } = await provider.getNetwork();
+
   const buildDirectory = '../react-app/src/contracts/truffle/';
   const contractsFile = '../react-app/src/contracts/deployed_contracts.json';
   const artifacts = fse.readdirSync(buildDirectory);
@@ -55,6 +64,5 @@ const main = async (callback) => {
     fse.writeFileSync(contractsFile, JSON.stringify(reactContracts, null, 2));
   }
 
-  callback();
 }
-module.exports = main;
+main();
