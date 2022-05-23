@@ -22,8 +22,7 @@ function NetworkDisplay({
             message="⚠️ Wrong Network ID"
             description={
               <div>
-                You have <b>chain id 1337</b> for localhost and you need to change it to <b>31337</b> to work with
-                HardHat.
+                You have <b>chain id 1337</b> for localhost and you need to change it to <b>31337</b>.
                 <div>(MetaMask -&gt; Settings -&gt; Networks -&gt; Chain ID -&gt; 31337)</div>
               </div>
             }

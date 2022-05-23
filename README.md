@@ -14,10 +14,10 @@ Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](htt
 > clone/fork 🏗 scaffold-eth:
 
 ```bash
-git clone https://github.com/scaffold-eth/scaffold-eth.git
+git clone https://github.com/trufflesuite/scaffold-eth.git
 ```
 
-> install and start your 👷‍ Hardhat chain:
+> install and start your Ganache chain:
 
 ```bash
 cd scaffold-eth
@@ -39,11 +39,11 @@ cd scaffold-eth
 yarn deploy
 ```
 
-🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
+🔏 Edit your smart contract `YourContract.sol` in `packages/truffle/contracts`
 
 📝 Edit your frontend `App.jsx` in `packages/react-app/src`
 
-💼 Edit your deployment scripts in `packages/hardhat/deploy`
+💼 Edit your deployment scripts in `packages/truffle/migrations`
 
 📱 Open http://localhost:3000 to see the app
 
@@ -82,7 +82,7 @@ Documentation, tutorials, challenges, and many more resources, visit: [docs.scaf
 
 Check out all the [active branches](https://github.com/scaffold-eth/scaffold-eth/branches/active), [open issues](https://github.com/scaffold-eth/scaffold-eth/issues), and join/fund the 🏰 [BuidlGuidl](https://BuidlGuidl.com)!
 
-  
+
  - 🚤  [Follow the full Ethereum Speed Run](https://medium.com/@austin_48503/%EF%B8%8Fethereum-dev-speed-run-bd72bcba6a4c)
 
 

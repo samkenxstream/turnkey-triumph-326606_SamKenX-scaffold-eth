@@ -1,25 +1,21 @@
-const { ethers } = require("hardhat");
-const { use, expect } = require("chai");
-const { solidity } = require("ethereum-waffle");
+const { expect, assert } = require("chai");
+const truffleAssert = require('truffle-assertions');
 
-use(solidity);
+const YourContract = artifacts.require("YourContract");
 
-describe("My Dapp", function () {
+contract("My Dapp", function () {
   let myContract;
-
   // quick fix to let gas reporter fetch data from gas station & coinmarketcap
   before((done) => {
     setTimeout(done, 2000);
   });
 
-  describe("YourContract", function () {
+  contract("YourContract", function () {
     it("Should deploy YourContract", async function () {
-      const YourContract = await ethers.getContractFactory("YourContract");
-
-      myContract = await YourContract.deploy();
+      myContract = await YourContract.deployed();
     });
 
-    describe("setPurpose()", function () {
+    contract("setPurpose()", function () {
       it("Should be able to set a new purpose", async function () {
         const newPurpose = "Test Purpose";
 
@@ -28,13 +24,8 @@ describe("My Dapp", function () {
       });
 
       it("Should emit a SetPurpose event ", async function () {
-        const [owner] = await ethers.getSigners();
-
         const newPurpose = "Another Test Purpose";
-
-        expect(await myContract.setPurpose(newPurpose))
-          .to.emit(myContract, "SetPurpose")
-          .withArgs(owner.address, newPurpose);
+        truffleAssert.eventEmitted(await myContract.setPurpose(newPurpose), "SetPurpose");
       });
     });
   });
