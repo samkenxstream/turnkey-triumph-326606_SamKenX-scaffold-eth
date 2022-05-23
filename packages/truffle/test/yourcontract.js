@@ -1,4 +1,5 @@
-// const { expect } = require("chai");
+const { expect, assert } = require("chai");
+const truffleAssert = require('truffle-assertions');
 
 const YourContract = artifacts.require("YourContract");
 
@@ -14,7 +15,7 @@ contract("My Dapp", function () {
       myContract = await YourContract.deployed();
     });
 
-    describe("setPurpose()", function () {
+    contract("setPurpose()", function () {
       it("Should be able to set a new purpose", async function () {
         const newPurpose = "Test Purpose";
 
@@ -23,13 +24,8 @@ contract("My Dapp", function () {
       });
 
       it("Should emit a SetPurpose event ", async function () {
-        const [owner] = await ethers.getSigners();
-
         const newPurpose = "Another Test Purpose";
-
-        expect(await myContract.setPurpose(newPurpose))
-          .to.emit(myContract, "SetPurpose")
-          .withArgs(owner.address, newPurpose);
+        truffleAssert.eventEmitted(await myContract.setPurpose(newPurpose), "SetPurpose");
       });
     });
   });
